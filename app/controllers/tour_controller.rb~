@@ -1,0 +1,23 @@
+class TourController < ApplicationController
+  def index
+	@tours = {"Suggested tour" => "suggested","Civil War Tour" => "civilwar","Impressionist tour" => "impressionist","Spaghetti Monster Tour" => "spaghettimonster"}
+#to be replaced with content pulled from a database
+  end
+
+	def spaghettimonster
+		@message = "the spaghetti monster has touched you with his noodly appendage"
+	end
+
+	def civilwar
+		@message = "the civil war started in 1861"
+	end
+	
+	def impressionist
+		@message = "I dont really get what this painting is supposed to be. a fish?"
+	end
+
+	def suggested
+		@message = "please take this suggested virtual tour though campus"
+	end
+
+end

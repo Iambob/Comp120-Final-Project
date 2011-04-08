@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<%= stylesheet_link_tag "Main" %>
+    <title>Art Tour!</title>
+    <script type="text/javascript">
+      function about() {
+        info = document.getElementById('about-content');
+        if (window.XMLHttpRequest)
+          { xhr = new XMLHttpRequest(); }
+        else
+          { xhr = new ActiveXObject("Microsoft.XMLHTTP"); }
+        xhr.open("GET","rails/info/properties",false);
+        xhr.send("");
+        info.innerHTML = xhr.responseText;
+        info.style.display = 'block'
+      }
+    </script>
+  </head>
+  <body>
+    <div id="page">
+      <div id="sidebar">
+        <ul id="sidebar-items">
+          <li>
+            <h3>Browse the documentation</h3>
+            <ul class="links">
+              <li><a href="http://api.rubyonrails.org/">Art Gallery home</a></li>
+              <li><a href="http://stdlib.rubyonrails.org/">Gallery</a></li>
+              <li><a href="http://corelib.rubyonrails.org/">About Us</a></li>
+              
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div id="content">
+        <div id="header">
+          <h1>Take A tour</h1>
+          <h2>Many different theme tours to choose from!</h2>
+        </div>
+
+        <div id="about">
+          <h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
+          <div id="about-content" style="display: none"></div>
+        </div>
+
+        <div id="getting-started">
+          <h1>Most Popular Tours:</h1>
+          <h2>sorted by views:</h2>
+
+          <ol>
+						<% @tours.each do |tour, link| %>
+            <li>
+							<%= link_to tour, :controller => "tour", :action => link %>
+            </li>
+						<% end %>
+            <li>
+              <h2>Click a tour and get learning!</h2>
+              <p>otherwise get the fuck out</p>
+            </li>
+
+            <li>
+              <h2>Create your own tour!</h2>
+              <p>coming soon</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div id="footer">&nbsp;</div>
+    </div>
+  </body>
+</html>
